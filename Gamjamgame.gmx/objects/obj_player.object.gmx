@@ -68,6 +68,8 @@ right = -keyboard_check(ord("D"));
 left_right = left + right;
 hsp = (left + right) * move_speed;
 
+Collision_Check(obj_Solid);
+
 //move_towards_point(mouse_x,mouse_y,(updown*5));
 x -=hsp;
 y -=vsp;
@@ -95,9 +97,9 @@ y -=vsp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = obj_Solid.depth_player_level;
+            <string>depth = global.depth_player_level;
 draw_sprite_ext(spr_player,image_index,x,y,1,1,dir,c_white,255);
-
+//draw_sprite(spr_player,image_index,x,y);
 </string>
           </argument>
         </arguments>

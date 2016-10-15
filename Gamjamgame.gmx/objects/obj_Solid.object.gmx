@@ -25,10 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth_floor_level = 50;
-depth_player_level = 0;
-depth_cover_level=-25;
-
+            <string>
+depth = global.depth_floor_level;
 </string>
           </argument>
         </arguments>

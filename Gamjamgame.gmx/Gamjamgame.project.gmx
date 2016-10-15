@@ -11,9 +11,11 @@
     <sprite>sprites\spr_room_floor_wood1</sprite>
     <sprite>sprites\spr_room_cover</sprite>
     <sprite>sprites\sprite3</sprite>
+    <sprite>sprites\sprite5</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
+    <background>background\background1</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -26,6 +28,8 @@
     <object>objects\obj_Pickups</object>
     <object>objects\obj_room_floor_wood1</object>
     <object>objects\obj_room_cover</object>
+    <object>objects\obj_lighting_control</object>
+    <object>objects\obj_enemy_sigil</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\setup_globals</room>

@@ -6,11 +6,14 @@
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
-  <speed>30</speed>
+  <speed>60</speed>
   <persistent>-1</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>//setup globals if needed. see gunpoint guy videos on wierd video setup script
+global.depth_floor_level = 50;
+global.depth_player_level = 0;
+global.depth_cover_level=-25;
 
 room_goto_next();</code>
   <enableViews>0</enableViews>

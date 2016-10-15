@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-50</depth>
   <persistent>0</persistent>
-  <parentName>obj_Solid</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-depth = depth_floor_level;
+            <string>
+//depth = depth_floor_level;
 </string>
           </argument>
         </arguments>

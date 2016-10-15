@@ -25,19 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hsp = 0;
-vsp = 0;
-dir = 0;
-move_speed = 10;
-cooldown_between_shots = 10; 
-noise_level = 0.0;
+            <string>global.light=surface_create(view_wview[0],view_hview[0]);
+
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -54,16 +50,28 @@ noise_level = 0.0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction
-// this is where i will use a state machine. enemy will be in basic meander around, cautios,alerted,attack,or dead. 
+            <string>
+
+surface_set_target(global.light);
+draw_clear_alpha(c_black,0.6);
+
+//draw_background_tiled(background1,0,0);
+draw_set_blend_mode(bm_subtract)
+draw_circle(obj_player.x-view_xview[0], obj_player.y-view_yview[0], 64, false);
+
+draw_set_blend_mode(bm_normal)
+surface_reset_target();
 
 
+if surface_exists(global.light) 
+    {
+    draw_surface(global.light,view_xview[0],view_yview[0])
+    }
 
-Collision_Check(obj_Solid);
-
-//move_towards_point(mouse_x,mouse_y,(updown*5));
-x -=hsp;
-y -=vsp;
+else
+            {
+            global.light=surface_create(view_wview[0],view_hview[0])
+            }
 </string>
           </argument>
         </arguments>
