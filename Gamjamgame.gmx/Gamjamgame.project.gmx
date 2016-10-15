@@ -19,7 +19,11 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\Collision_Check.gml</script>
+    <script>scripts\scr_collision_check.gml</script>
+    <script>scripts\scr_state_return_origin.gml</script>
+    <script>scripts\scr_state_attack.gml</script>
+    <script>scripts\scr_state_investigate.gml</script>
+    <script>scripts\scr_state_idle.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_Enemy</object>
@@ -30,6 +34,7 @@
     <object>objects\obj_room_cover</object>
     <object>objects\obj_lighting_control</object>
     <object>objects\obj_enemy_sigil</object>
+    <object>objects\origin_marker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\setup_globals</room>

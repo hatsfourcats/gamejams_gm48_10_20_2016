@@ -68,7 +68,7 @@ right = -keyboard_check(ord("D"));
 left_right = left + right;
 hsp = (left + right) * move_speed;
 
-Collision_Check(obj_Solid);
+scr_collision_check(obj_Solid);
 
 //move_towards_point(mouse_x,mouse_y,(updown*5));
 x -=hsp;

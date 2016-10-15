@@ -29,15 +29,34 @@
 //dir = random(360);
 origin_x = x;
 origin_y = y;
-
-move_speed = 10;
+instance_create(origin_x,origin_y,origin_marker);
+min_origin_distance = 25;
+max_origin_distance = 500;
+move_speed = 5;
 vsp = choose(-1,0,1) *move_speed;
 hsp = choose(-1,0,1) *move_speed;
 
 cooldown_between_shots = 10; 
 noise_level = 0.0;
-move_change_cooldown_default = 15;
+move_change_cooldown_default = room_speed *2;
 move_change_cooldown = 1;
+
+
+
+
+//finite state system 
+enum states {
+idle,
+investigate,
+attack,
+return_origin
+
+}
+current_state = states.idle;
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -60,25 +79,64 @@ move_change_cooldown = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_message("vsp is " + string(vsp) + ("hsp is") +string(hsp));
+            <string>
 if (move_change_cooldown &lt; 1) 
    {  
-    show_debug_message("move change cooldown called val is" + string(move_change_cooldown));
-    vsp = choose(-1,0,1) *move_speed;
-    hsp = choose(-1,0,1) *move_speed;
+   
+    switch(current_state)  
+    {
+    
+    case states.idle:scr_state_idle(); break;
+    case states.attack:scr_state_attack();break;
+    case states.investigate:scr_state_investigate();break;
+    case states.return_origin:scr_state_return_origin();break;                             
+    } 
+    show_debug_message(current_state);
+   
+
     move_change_cooldown = move_change_cooldown_default;
-        show_debug_message("move change cooldown ended val is" + string(move_change_cooldown));
+
     } 
 
 else if (move_change_cooldown &gt;= 1) { move_change_cooldown--;}
 
 // this is where i will use a state machine. enemy will be in basic meander around, cautios,alerted,attack,or dead. 
 
-Collision_Check(obj_Solid);
+scr_collision_check(obj_Solid);
 x -=hsp;
 y -=vsp;
-
+//image_angle = direction;
 //move_towards_point(mouse_x,mouse_y,(updown*5));
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_rectangle(origin_x,origin_y,origin_x+16,origin_y+16,0);
+draw_set_color(c_red);
+draw_text(origin_x,origin_y,id);
+draw_text(origin_x,origin_y+16,"X: "+string(origin_x)+" Y: " + string(origin_y));
+draw_text(x,y,id);
+draw_text(x,y+16,"X: "+string(x)+" Y: " + string(y));
+draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_black,255);
 
 </string>
           </argument>
