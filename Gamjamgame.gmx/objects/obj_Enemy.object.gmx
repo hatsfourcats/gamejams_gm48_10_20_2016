@@ -25,13 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hsp = 0;
-vsp = 0;
-dir = 0;
+            <string>
+//dir = random(360);
+origin_x = x;
+origin_y = y;
+
 move_speed = 10;
+vsp = choose(-1,0,1) *move_speed;
+hsp = choose(-1,0,1) *move_speed;
+
 cooldown_between_shots = 10; 
 noise_level = 0.0;
-
+move_change_cooldown_default = 15;
+move_change_cooldown = 1;
 </string>
           </argument>
         </arguments>
@@ -54,16 +60,26 @@ noise_level = 0.0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction
+            <string>show_debug_message("vsp is " + string(vsp) + ("hsp is") +string(hsp));
+if (move_change_cooldown &lt; 1) 
+   {  
+    show_debug_message("move change cooldown called val is" + string(move_change_cooldown));
+    vsp = choose(-1,0,1) *move_speed;
+    hsp = choose(-1,0,1) *move_speed;
+    move_change_cooldown = move_change_cooldown_default;
+        show_debug_message("move change cooldown ended val is" + string(move_change_cooldown));
+    } 
+
+else if (move_change_cooldown &gt;= 1) { move_change_cooldown--;}
+
 // this is where i will use a state machine. enemy will be in basic meander around, cautios,alerted,attack,or dead. 
 
-
-
 Collision_Check(obj_Solid);
-
-//move_towards_point(mouse_x,mouse_y,(updown*5));
 x -=hsp;
 y -=vsp;
+
+//move_towards_point(mouse_x,mouse_y,(updown*5));
+
 </string>
           </argument>
         </arguments>
