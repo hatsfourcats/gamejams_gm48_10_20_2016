@@ -27,12 +27,15 @@
             <kind>1</kind>
             <string>
 //dir = random(360);
+/* OLD 
 origin_x = x;
 origin_y = y;
-instance_create(origin_x,origin_y,origin_marker);
-min_origin_distance = 25;
-max_origin_distance = 500;
-move_speed = 5;
+//instance_create(origin_x,origin_y,origin_marker);
+min_origin_distance = 128;
+max_origin_distance = 256;
+move_speed_normal = 5;
+move_speed_chase = 11;
+move_speed = move_speed_normal;
 vsp = choose(-1,0,1) *move_speed;
 hsp = choose(-1,0,1) *move_speed;
 
@@ -80,8 +83,6 @@ current_state = states.idle;
           <argument>
             <kind>1</kind>
             <string>
-if (move_change_cooldown &lt; 1) 
-   {  
    
     switch(current_state)  
     {
@@ -90,21 +91,15 @@ if (move_change_cooldown &lt; 1)
     case states.attack:scr_state_attack();break;
     case states.investigate:scr_state_investigate();break;
     case states.return_origin:scr_state_return_origin();break;                             
-    } 
-    show_debug_message(current_state);
-   
-
-    move_change_cooldown = move_change_cooldown_default;
-
-    } 
-
-else if (move_change_cooldown &gt;= 1) { move_change_cooldown--;}
-
+    }
 // this is where i will use a state machine. enemy will be in basic meander around, cautios,alerted,attack,or dead. 
 
 scr_collision_check(obj_Solid);
 x -=hsp;
 y -=vsp;
+
+show_debug_message("end of enemy step X: " + string(x));
+show_debug_message("end of enemy step Y: " + string(y));
 //image_angle = direction;
 //move_towards_point(mouse_x,mouse_y,(updown*5));
 
@@ -131,11 +126,15 @@ y -=vsp;
           <argument>
             <kind>1</kind>
             <string>draw_rectangle(origin_x,origin_y,origin_x+16,origin_y+16,0);
-draw_set_color(c_red);
+draw_set_color(c_teal);
 draw_text(origin_x,origin_y,id);
 draw_text(origin_x,origin_y+16,"X: "+string(origin_x)+" Y: " + string(origin_y));
 draw_text(x,y,id);
 draw_text(x,y+16,"X: "+string(x)+" Y: " + string(y));
+draw_circle(origin_x,origin_y,min_origin_distance,1);
+draw_set_color(c_fuchsia);
+draw_circle(origin_x,origin_y,max_origin_distance,1);
+
 draw_sprite_ext(sprite_index,image_index,x,y,1,1,0,c_black,255);
 
 </string>

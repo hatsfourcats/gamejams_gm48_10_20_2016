@@ -57,7 +57,7 @@ draw_clear_alpha(c_black,0.6);
 
 //draw_background_tiled(background1,0,0);
 draw_set_blend_mode(bm_subtract)
-draw_circle(obj_player.x-view_xview[0], obj_player.y-view_yview[0], 64, false);
+draw_circle(obj_player.x-view_xview[0], obj_player.y-view_yview[0], 256, false);
 
 draw_set_blend_mode(bm_normal)
 surface_reset_target();
