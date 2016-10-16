@@ -35,6 +35,7 @@
     <object>objects\obj_lighting_control</object>
     <object>objects\obj_enemy_sigil</object>
     <object>objects\origin_marker</object>
+    <object>objects\object9</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\setup_globals</room>
