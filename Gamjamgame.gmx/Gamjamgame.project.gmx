@@ -8,6 +8,8 @@
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_enemy_sigil</sprite>
+    <sprite>sprites\spr_enemy_firing</sprite>
+    <sprite>sprites\spr_hit</sprite>
     <sprite>sprites\spr_room_floor_wood1</sprite>
     <sprite>sprites\spr_room_cover</sprite>
     <sprite>sprites\sprite3</sprite>
@@ -30,12 +32,12 @@
     <object>objects\obj_Solid</object>
     <object>objects\obj_player</object>
     <object>objects\obj_Pickups</object>
-    <object>objects\obj_room_floor_wood1</object>
     <object>objects\obj_room_cover</object>
     <object>objects\obj_lighting_control</object>
     <object>objects\obj_enemy_sigil</object>
-    <object>objects\origin_marker</object>
     <object>objects\object9</object>
+    <object>objects\obj_laser</object>
+    <object>objects\obj_hit</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\setup_globals</room>
@@ -45,7 +47,7 @@
     <rtf>help.rtf</rtf>
   </help>
   <TutorialState>
-    <IsTutorial>-1</IsTutorial>
+    <IsTutorial>0</IsTutorial>
     <TutorialName>C:\Users\benevicious\AppData\Local\GameMaker-Studio\tutorials\07_Game_States\</TutorialName>
     <TutorialPage>0</TutorialPage>
   </TutorialState>

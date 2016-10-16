@@ -32,7 +32,8 @@ move_speed = 10;
 cooldown_between_shots = 10; 
 ammo = 6;
 noise_level = 0.0;
-
+max_hp = 10;
+hp = max_hp;
 </string>
           </argument>
         </arguments>
@@ -69,6 +70,8 @@ left_right = left + right;
 hsp = (left + right) * move_speed;
 
 scr_collision_check(obj_Solid);
+
+show_debug_message(string(hp));
 
 //move_towards_point(mouse_x,mouse_y,(updown*5));
 x -=hsp;

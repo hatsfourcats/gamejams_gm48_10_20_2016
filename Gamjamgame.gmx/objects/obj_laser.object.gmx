@@ -25,30 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-dir = random(360);
-default_shot_cooldown = (room_speed + random(room_speed)) * 2; 
-shot_cooldown = default_shot_cooldown;
-shot_cooldown_decay = 1;
-hp = 5;
-idle_turn_rate = 5;
+            <string>damage = 1;
+lifetime = room_speed /2 ;
+life_decay = 1;
 
-enemy_target = obj_player;
-
-
-
-//finite state system 
-enum states {
-idle,
-attack,
-
-
-}
-current_state = states.attack;
-
-
-
-
+line_drawn = 0;
+show_debug_message("laser created "); 
 </string>
           </argument>
         </arguments>
@@ -71,20 +53,8 @@ current_state = states.attack;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (hp &lt;1) {instance_destroy();}
-
-   
-    switch(current_state)  
-    {
-    
-    // i somehow think this can be done using the enums property like an object method in js but dont have time to explore
-    
-    case states.idle:scr_state_idle(); break;
-    case states.attack:scr_state_attack();break;
-     }
-     //show_debug_message(current_state);
-// this is where i will use a state machine. enemy will be in basic meander around, cautios,alerted,attack,or dead. 
-
+            <string>if (lifetime &lt; 0) { show_debug_message("destroying an instance"); instance_destroy(); }
+else { lifetime = lifetime - life_decay; }
 
 </string>
           </argument>
@@ -108,25 +78,16 @@ current_state = states.attack;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_sprite_ext(sprite_index,image_index,x,y,1,1,direction,c_white,1);
-cooldown_animation = shot_cooldown;
-shape_size = 9;
+            <string>color_1 = choose(c_aqua,c_white,c_blue);
+color_2 = choose(c_aqua,c_white,c_blue);
 
-switch (current_state) {
-  case(states.attack):
-  draw_set_colour(c_red);
-  draw_triangle(x-shape_size,y-shape_size,x,y+shape_size,x+shape_size,y+shape_size,true);
-  
-  break;
-  default:
-  break;
+//draw_set_colour(c_white);
 
-}
 
-//draw_line_colour(x,y,enemy_target.x,enemy_target.y,c_white,c_aqua);
+draw_line_colour(x,y,target_x,target_y,color_1,color_2); 
 
- 
+
+
 
 </string>
           </argument>
