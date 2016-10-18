@@ -14,6 +14,7 @@
 global.depth_floor_level = 50;
 global.depth_player_level = 0;
 global.depth_cover_level=-25;
+global.high_score = 0;
 randomize();
 
 

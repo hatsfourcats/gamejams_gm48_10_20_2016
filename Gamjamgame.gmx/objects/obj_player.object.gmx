@@ -32,8 +32,12 @@ move_speed = 10;
 cooldown_between_shots = 10; 
 ammo = 6;
 noise_level = 0.0;
-max_hp = 10;
+max_hp = 60;
 hp = max_hp;
+current_score = 0; 
+seconds_alive = 0;
+
+
 </string>
           </argument>
         </arguments>
@@ -60,6 +64,19 @@ hp = max_hp;
 
 //Setting barkward to negative on purpose. I will use this later to determine
 //speed of movement. If backward is pressed the speed will be negative. 
+seconds_alive++;
+score_calculation =  (seconds_alive/ room_speed)  * instance_number(obj_Enemy);
+current_score += score_calculation;
+
+
+
+show_debug_message("Player score" + string(current_score) + "global high" + string(global.high_score));
+if current_score &gt; global.high_score { global.high_score = current_score; }
+if hp &lt;= 0 {room_restart();}
+
+
+
+
 forward = keyboard_check(ord("W"));
 backward = -keyboard_check(ord("S"));
 vsp = (forward + backward) * move_speed;
@@ -72,6 +89,7 @@ hsp = (left + right) * move_speed;
 scr_collision_check(obj_Solid);
 
 show_debug_message(string(hp));
+scr_summon_enemy();
 
 //move_towards_point(mouse_x,mouse_y,(updown*5));
 x -=hsp;

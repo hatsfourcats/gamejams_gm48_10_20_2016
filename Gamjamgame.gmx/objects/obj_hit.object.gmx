@@ -28,11 +28,23 @@
             <string>contact_damage = 1;
 lingering_damage = .25;
 rotation = 0;
-image_speed = 0.10;
+image_speed = 12;
+
+lifetime_default = room_speed *2;
+lifetime_decay =1
+lifetime = lifetime_default;
+
+shot_cooldown_default = room_speed / 2;
+shot_cooldown_decay =1;
+shot_cooldown = shot_cooldown_default;
+
+
 if (collision_circle(x,y,16,obj_player,false,true)) { 
 obj_player.hp -= contact_damage;
 
 }; 
+
+
 </string>
           </argument>
         </arguments>
@@ -55,12 +67,21 @@ obj_player.hp -= contact_damage;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if lifetime &lt; 1 { instance_destroy(); }
+lifetime = lifetime - lifetime_decay;
+
 
 if (collision_circle(x,y,16,obj_player,false,true)) { 
-obj_player.hp -= lingering_damage;
+    if shot_cooldown &lt; 1 { 
+       obj_player.hp -= lingering_damage;
+        shot_cooldown = shot_cooldown_default;
+         }
 
-}; 
+}
+
+if shot_cooldown &gt;= 1 {
+shot_cooldown = shot_cooldown - shot_cooldown_decay;
+}
 </string>
           </argument>
         </arguments>

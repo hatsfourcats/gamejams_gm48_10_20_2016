@@ -1,4 +1,6 @@
 #define scr_state_attack
+laser_cutoff = 32;
+
 if (enemy_target == "none") 
     {
     state = states.idle;    
@@ -14,18 +16,20 @@ if (enemy_target != "none" && instance_exists(enemy_target)) {
         if (shot_cooldown < 1) { 
 //        point_distance
 
-  
+         
+          
             laser = instance_create(x+lengthdir_x(32,direction) ,y+lengthdir_y(32,direction),obj_laser);
             colliding_with_solid = collision_line(x,y,enemy_target.x,enemy_target.y,obj_Solid,false,true);
             shot_cooldown = default_shot_cooldown;   
             
-            
+   //         distance_to_point
    
             if (colliding_with_solid) { 
-            
+            show_debug_message( string(distance_to_point(colliding_with_solid.x)));
             // minus or plus 10 
-                laser.target_x = colliding_with_solid.x - (sign(colliding_with_solid.x - x) *30);
-                laser.target_y = colliding_with_solid.y - (sign(colliding_with_solid.y - y) *30);
+            //lengthdir_x(16,(direction *-1));
+                laser.target_x = colliding_with_solid.x - laser_cutoff;
+                laser.target_y = colliding_with_solid.y - laser_cutoff;
                 
                /* 
                 show_debug_message("X: " + string(x));

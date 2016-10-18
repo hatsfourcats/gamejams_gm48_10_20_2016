@@ -30,6 +30,8 @@ lifetime = room_speed /2 ;
 life_decay = 1;
 
 line_drawn = 0;
+
+audio_play_sound(snd_laser,0,false);
 show_debug_message("laser created "); 
 </string>
           </argument>
