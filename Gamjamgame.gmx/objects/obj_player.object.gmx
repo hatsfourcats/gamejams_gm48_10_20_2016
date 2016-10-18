@@ -70,7 +70,7 @@ current_score += score_calculation;
 
 
 
-show_debug_message("Player score" + string(current_score) + "global high" + string(global.high_score));
+//show_debug_message("Player score" + string(current_score) + "global high" + string(global.high_score));
 if current_score &gt; global.high_score { global.high_score = current_score; }
 if hp &lt;= 0 {room_restart();}
 
@@ -88,7 +88,7 @@ hsp = (left + right) * move_speed;
 
 scr_collision_check(obj_Solid);
 
-show_debug_message(string(hp));
+//show_debug_message(string(hp));
 scr_summon_enemy();
 
 //move_towards_point(mouse_x,mouse_y,(updown*5));
