@@ -12,25 +12,23 @@ if (enemy_target != "none" && instance_exists(enemy_target)) {
 
     dir = point_direction(x,y,enemy_target.x,enemy_target.y);
     
-    direction = round(dir);
-    
+    direction = dir;
+   //test 
         if (shot_cooldown < 1) { 
 
-
-            colliding_with_solid = collision_line(enemy_target.x,enemy_target.y,x,y,obj_Solid,false,true);       
+// all this should be somewhere else i think. state should just tell it to fire, fire should be defined somewhere else
+            //colliding_with_solid = collision_line(x,y,enemy_target.x,enemy_target.y,obj_Solid,true,true);       
             shot_cooldown = default_shot_cooldown;   
             
 
-   
-            if (colliding_with_solid) { 
-
                      laser = instance_create(x+lengthdir_x(32,direction) ,y+lengthdir_y(32,direction),obj_laser);
                      
-                     laser.target_x = colliding_with_solid.x - (laser_cutoff * sign(colliding_with_solid.x - x));                         ;
-                     laser.target_y = colliding_with_solid.y - (laser_cutoff * sign(colliding_with_solid.y - y));
-                
-                 show_debug_message("solid X: " + string(colliding_with_solid.x));
-                  show_debug_message( "solid Y:" + string(colliding_with_solid.y));
+                     laser.target_x = enemy_target.x;                         
+                     laser.target_y = enemy_target.y;
+                     laser.origin_x = x+lengthdir_x(32,direction);
+                     laser.origin_y = y+lengthdir_y(32,direction);
+//                 show_debug_message("solid X: " + string(colliding_with_solid.x));
+  //                show_debug_message( "solid Y:" + string(colliding_with_solid.y));
 
                   show_debug_message("laser X: " + string(laser.target_x ));
                   show_debug_message( "laser Y:" + string(laser.target_y ));
@@ -45,17 +43,8 @@ if (enemy_target != "none" && instance_exists(enemy_target)) {
                   show_debug_message("layserY: " + string(laser.target_y ));   */
                 }
             
-            else {
-            
-            // include accuracy here which goes up with player speed.
-                laser = instance_create(x+lengthdir_x(32,direction) ,y+lengthdir_y(32,direction),obj_laser);
-                laser.target_x = obj_player.x;
-                laser.target_y = obj_player.y;
-                hit = instance_create(enemy_target.x, enemy_target.y,obj_hit);
                 
                 
-                }
-}                
  
        else {
         

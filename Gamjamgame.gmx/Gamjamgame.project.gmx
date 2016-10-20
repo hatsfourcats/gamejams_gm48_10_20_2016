@@ -16,6 +16,7 @@
     <sprite>sprites\spr_room_cover</sprite>
     <sprite>sprites\sprite3</sprite>
     <sprite>sprites\sprite5</sprite>
+    <sprite>sprites\sprite_1px</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -29,6 +30,8 @@
     <script>scripts\scr_state_investigate.gml</script>
     <script>scripts\scr_state_idle.gml</script>
     <script>scripts\scr_summon_enemy.gml</script>
+    <script>scripts\scr_Enemy_step.gml</script>
+    <script>scripts\scr_Projectile_step.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_Enemy</object>
@@ -42,6 +45,7 @@
     <object>objects\obj_laser</object>
     <object>objects\obj_hit</object>
     <object>objects\obj_scores</object>
+    <object>objects\obj_Projectile</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\setup_globals</room>
@@ -51,8 +55,8 @@
     <rtf>help.rtf</rtf>
   </help>
   <TutorialState>
-    <IsTutorial>-1</IsTutorial>
+    <IsTutorial>0</IsTutorial>
     <TutorialName>C:\Users\benevicious\AppData\Local\GameMaker-Studio\tutorials\07_Game_States\</TutorialName>
-    <TutorialPage>0</TutorialPage>
+    <TutorialPage>3</TutorialPage>
   </TutorialState>
 </assets>
