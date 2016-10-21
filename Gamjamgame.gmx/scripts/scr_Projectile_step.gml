@@ -1,6 +1,14 @@
-hsp = -move_speed * sign(target_x - x);
-vsp = -move_speed  * sign(target_y - y);
+if (lifetime < 0) { show_debug_message("destroying an instance"); instance_destroy(); }
+else { 
+lifetime = lifetime - lifetime_decay; 
+if (direction == abs(0)) {
 
-scr_collision_check(obj_Solid);
-x -=hsp;
-y -=vsp;
+	direction = point_direction(x,y,target_x,target_y);}
+
+
+scr_Projectile_collision();
+
+}
+
+
+

@@ -12,7 +12,7 @@ if (place_meeting(x-hsp,y,object_to_check))
        {
         x -= sign(hsp); 
        }
-       if (object_parent == "obj_Projectile") { hsp = hsp * -1; show_debug_message("horiz bounce hsp now" + string(hsp)); } else { hsp =0; }
+       if (object_parent == "obj_Projectile") { hsp = hsp * -1; show_debug_message("vert bounce hsp now" + string(hsp)); } else { hsp =0; }
    }
    
    
@@ -28,7 +28,7 @@ if (place_meeting(x,y-vsp,object_to_check))
    { 
    vsp = vsp * -1; 
    
-   show_debug_message("vert bounce hsp now" + string(vsp));
+   show_debug_message("vert bounce hsp now" + string(hsp));
    }
    
      else { vsp =0; }

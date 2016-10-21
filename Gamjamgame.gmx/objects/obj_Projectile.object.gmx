@@ -25,13 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifetime_default = room_speed *5;
-lifetime_decay =1
-lifetime = lifetime_default;
-bounces = 0;
-max_bounces = 4;
-
-move_speed = room_speed /6
+            <string>scr_Projectile_create();
 
 
 </string>
@@ -56,14 +50,9 @@ move_speed = room_speed /6
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (lifetime &lt; 0) { show_debug_message("destroying an instance"); instance_destroy(); }
-else { 
-lifetime = lifetime - lifetime_decay; 
-// if bounce enabled
-scr_Projectile_step();
+            <string>scr_Projectile_step();
 
-}
+
 </string>
           </argument>
         </arguments>

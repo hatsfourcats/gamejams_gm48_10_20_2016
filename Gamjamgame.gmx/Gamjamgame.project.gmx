@@ -32,6 +32,8 @@
     <script>scripts\scr_summon_enemy.gml</script>
     <script>scripts\scr_Enemy_step.gml</script>
     <script>scripts\scr_Projectile_step.gml</script>
+    <script>scripts\scr_Projectile_collision.gml</script>
+    <script>scripts\scr_Projectile_create.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_Enemy</object>
@@ -55,7 +57,7 @@
     <rtf>help.rtf</rtf>
   </help>
   <TutorialState>
-    <IsTutorial>0</IsTutorial>
+    <IsTutorial>-1</IsTutorial>
     <TutorialName>C:\Users\benevicious\AppData\Local\GameMaker-Studio\tutorials\07_Game_States\</TutorialName>
     <TutorialPage>3</TutorialPage>
   </TutorialState>
